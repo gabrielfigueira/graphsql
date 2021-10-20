@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+INDEX
 
-* System dependencies
+query {
 
-* Configuration
+  users {
+    id
+    name
+  }
+}
 
-* Database creation
+SHOW
 
-* Database initialization
+query {
 
-* How to run the test suite
+      user(id: 1002) {
+        id
+        name
+      }
 
-* Services (job queues, cache servers, search engines, etc.)
+}
 
-* Deployment instructions
+CREATE
+mutation {
+    createUser(input: { fullName: "Hello World", email: "This is my first post" }) {
+      user {
+        id
+        name
+        email
+      }
+    }
+}
 
-* ...
+UPDATE
+
+mutation {
+
+  updateUser(input: {id: "101",
+    attributes: {
+      name: "gariel" ,
+      email: "email@gmail.com"
+    }
+  }){
+    user {
+      id
+    }
+  }
+}
+
+DESTROY
+
+mutation {
+
+  destroyUser(input: {id: "101"}){
+    id
+  }
+}
